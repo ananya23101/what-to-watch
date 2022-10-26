@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+ let genre_id = 10751;
+const API_URl = `https://api.themoviedb.org/3/discover/movie?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&region=US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${genre_id}&with_watch_monetization_types=flatrate`
+
+
 
 function App() {
+ 
+  useEffect(()=>{
+    fetch(API_URl)
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data);
+    })
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Navbar />
+     <h2>Press spacebar to generate</h2>
     </div>
   );
 }

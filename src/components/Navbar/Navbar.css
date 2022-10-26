@@ -1,0 +1,25 @@
+.navbar{
+    color:  #e50914;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.75rem;
+}
+.links a{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.25rem;
+    font-size: 1.25rem;
+    display: inline-block;
+}
+.links a::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width .3s;
+}
+.links a:hover::after{
+   width: 100%;
+}
