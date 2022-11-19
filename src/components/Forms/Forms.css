@@ -1,0 +1,38 @@
+.create-form{
+    color: #fff;
+    max-width: 750px;
+    margin: 120px auto;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 50vh;
+    height: 40vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    color: #fff;
+    text-align: center;
+    margin: 20px 0px 10px 0;
+}
+select{
+    width: 20rem;
+    text-align: center;
+    height: 2rem;
+    border-radius: 8px
+}
+button{
+    width: 6rem;
+    height: 2rem;
+    text-align: center;
+    margin: 30px auto;
+    background-color: #e50914;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+}
