@@ -1,42 +1,17 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Cards from '../Cards/Cards';
 import './Forms.css';
 
 const Forms = () => {
   const [genres, setGenres] = useState('');
   const [language, setLanguage] = useState('en');
   const [year, setYear] = useState('0');
-  const [movies, setMovies] = useState([]);
-
-// async function fetchdata() {
-//   const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${genres}&with_original_language=${language}&with_watch_monetization_types=flatrate`);
-//   const data = await response.json();
-//   let res = data.results;
-//   console.log(res);
-//   setMovies(res);
-//   console.log(movies);
-// }
-// useEffect(()=>{
-//   fetchdata();
-// },[])
-
+  const navigate = useNavigate();
 const handleSubmit = (e) => {
   e.preventDefault();
-  async function fetchdata() {
-      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${genres}&with_original_language=${language}&with_watch_monetization_types=flatrate`);
-      const data = await response.json();
-      let res = data.results;
-      console.log(res);
-      setMovies(res);
-      console.log(movies);
-    }
-fetchdata();
-
-  // fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${genres}&with_original_language=${language}&with_watch_monetization_types=flatrate`)
-  // .then((res)=>res.json())
-  // .then((data)=>setMovies(data.results));
-  // console.log(movies);
-
+    navigate('/Cards', {state:{gen : genres, id: language, ye: year}});
 }
   return (  
     <div className="create-form">
