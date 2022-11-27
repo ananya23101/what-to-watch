@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Cards from '../Cards/Cards';
+import { useNavigate } from 'react-router-dom';
 import './Forms.css';
 
 const Forms = () => {
