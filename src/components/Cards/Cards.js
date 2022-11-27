@@ -9,7 +9,6 @@ const Cards = () => {
     const location = useLocation();
     const [movies, setMovies] = useState([]);
    
-    const [page , setPage] = useState();
     let pi = 1;
     let [mi , setMi] = useState(0);
        useEffect(()=>{
@@ -17,8 +16,6 @@ const Cards = () => {
             const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${location.state.gen}&with_original_language=${location.state.id}&with_watch_monetization_types=flatrate`);
             const data = await response.json();
             let res = data.results;
-            let p = data.total_pages;
-            setPage(p);
             setMovies(res);
           }
           fetchdata(); 
