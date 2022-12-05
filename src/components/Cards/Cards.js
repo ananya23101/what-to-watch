@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-
+import './Cards.css';
 
 const Cards = () => {
     const location = useLocation();
@@ -16,6 +16,7 @@ const Cards = () => {
             const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&with_genres=${location.state.gen}&with_original_language=${location.state.id}&with_watch_monetization_types=flatrate`);
             const data = await response.json();
             let res = data.results;
+            console.log(res);
             setMovies(res);
           }
           fetchdata(); 
@@ -25,9 +26,12 @@ const Cards = () => {
       window.addEventListener('keypress', e => {
          if(e.key === ' '){
           e.preventDefault();
+          console.log(mi);
           if(mi === 16){
           pi = pi + 1;
           mi = 0;
+          console.log(pi);
+          
           }
           else{
             mi = mi + 4;
@@ -58,11 +62,18 @@ const Cards = () => {
         <div>
             <Navbar />
             <h2>Press Space bar to Generate</h2>
+            <div className="card-container">
             {mov.slice(mi, mi+4).map(obj => (
-                <div className="card"  key={obj.id}>
-            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.poster_path} alt="movieposter" style={{width: "100px"}}></img>
-            <p>{obj.title}</p>
-            </div>))}
+               <>
+               <div className="card"  key={obj.id}>
+            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.poster_path} alt="movieposter" style={{width: "240px"}}></img>
+            <h2>{obj.title}</h2>
+            <h5>Rating : {obj.vote_average}</h5>
+            <p className="text">{obj.overview}</p>
+            </div>
+               </>
+            ))}
+            </div>
         </div>
      );
 }

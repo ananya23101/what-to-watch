@@ -11,7 +11,8 @@ const handleSubmit = (e) => {
   e.preventDefault();
     navigate('/Cards', {state:{gen : genres, id: language, ye: year}});
 }
-  return (  
+  return ( 
+    <div className='background'> 
     <div className="create-form">
       <form onSubmit={handleSubmit}>
         <label>Genres</label>
@@ -62,6 +63,7 @@ const handleSubmit = (e) => {
        </select>
        <button type="submit">Generate</button>
       </form>
+    </div>
     </div>
   );
 }

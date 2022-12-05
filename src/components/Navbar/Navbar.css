@@ -4,6 +4,10 @@
     justify-content: space-around;
     align-items: center;
     padding: 1.75rem;
+    z-index: 99;
+}
+h1 {
+    color:  #e50914;
 }
 .links a{
     color: #fff;

@@ -4,7 +4,7 @@ import './Navbar.css';
 const Navbar = () => {
     return ( 
         <nav className="navbar">
-            <h1>What To Watch</h1>
+           <Link to = "/"><h1>What To Watch</h1></Link>
             <div className="links">
                    <Link to = "/">Movies</Link>
                    <Link to = "/Series">Series</Link>

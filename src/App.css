@@ -3,8 +3,9 @@
   margin: 0;
 }
 .App {
-   background-color: #a3a3aa;
+   background: #000;
    height: 100vh;
+   position: relative;
 }
 h2{
   color: #fff;

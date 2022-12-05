@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.card-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(44, 44, 44);
+    height: 600px;
+    width: 250px;
+    border-radius: 20px;
+    padding: 0.75rem;
+    margin: 1rem;
+}
+.card img {
+    height: 500px;
+    border-radius: 20px;
+}
+.card h2, h5{
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: none;
+}
+.card p{
+    position: absolute;
+    max-width: 250px;
+    color: white; 
+    display: none;
+}
+.card p:hover{
+    display: relative;
+}
+
