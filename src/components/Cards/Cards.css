@@ -27,13 +27,18 @@
     color: #fff;
     background-color: none;
 }
-.card p{
+.text{
+    color: #fff;
+    display: flex;
+    max-width: 210px;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 470px;
+    display: flex;
     position: absolute;
-    max-width: 250px;
-    color: white; 
-    display: none;
+    border-radius: 20px;
+    padding: 1rem;
+    opacity: 0;
 }
-.card p:hover{
-    display: relative;
+.text:hover{
+    opacity: 1;
 }
-
