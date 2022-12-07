@@ -53,7 +53,7 @@ const Cards = () => {
            }
         });
       }, []);
-      let mov = movies.filter(obj => obj.release_date > location.state.ye)
+      let mov = movies.filter(obj => obj.release_date > location.state.ye);
 
     return ( 
         <div>
