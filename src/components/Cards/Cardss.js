@@ -23,7 +23,8 @@ const Cardss = () => {
       window.addEventListener('keypress', e => {
          if(e.key === ' '){
           e.preventDefault();
-         //  console.log(mi);
+
+          console.log(mi);
           if(mi === 16){
           pi = pi + 1;
           mi = 0;
@@ -32,7 +33,6 @@ const Cardss = () => {
           }
           else{
             mi = mi + 4;
-            console.log(mi);
             setMi(mi);
           }
          }

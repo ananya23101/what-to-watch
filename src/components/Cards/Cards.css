@@ -42,3 +42,7 @@
 .text:hover{
     opacity: 1;
 }
+.save-button{
+    background-color:  rgb(44, 44, 44);
+    border: none;
+}

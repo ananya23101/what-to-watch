@@ -70,7 +70,7 @@ if(location.pathname === '/'){
         <option value="2010">Movies between 2010 to 2020</option>
         <option value="2020">Movies after 2020</option>
        </select>
-       <button type="submit">Generate</button>
+       <button type="submit" className='button'>Generate</button>
       </form>
     </div>
     </div>
@@ -125,7 +125,7 @@ else{
         <option value="2010">Movies between 2010 to 2020</option>
         <option value="2020">Movies after 2020</option>
        </select>
-       <button type="submit">Generate</button>
+       <button type="submit" className='button'>Generate</button>
       </form>
     </div>
     </div>
