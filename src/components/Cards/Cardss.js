@@ -4,63 +4,85 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import './Cards.css';
+
 const Cardss = () => {
     const location = useLocation();
-    const [movies, setMovies] = useState([]);
-    let pi = 1;
-    let [mi , setMi] = useState(0);
-       useEffect(()=>{
-         async function fetchdata() {
-            const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&page=1&with_genres=${location.state.gen}&with_original_language=${location.state.id}`);
-            const data = await response.json();
-            let res = data.results;
-            setMovies(res);
-          }
-          fetchdata(); 
-     },[])
- 
-     useEffect(()=>{
-      window.addEventListener('keypress', e => {
-         if(e.key === ' '){
-          e.preventDefault();
-
-          console.log(mi);
-          if(mi === 16){
-          pi = pi + 1;
-          mi = 0;
-          console.log(pi);
-          
+    const [series, setSeries] = useState([]);
+    const [items, setItems] = useState(() => {
+      const data = localStorage.getItem('myItem');
+      return data ? JSON.parse(data) : [ ]
+    })
+    let [pageIndex, setPageIndex] = useState(1);
+    let [seriesIndex , setSeriesIndex] = useState(0);
+    const handleClick = (name, overview, vote, path) => {
+      setItems([...items, {
+         id: name,
+         view: overview,
+         votet: vote,
+         patht: path
+      }]);
+          localStorage.setItem('myItem', JSON.stringify([
+            ...items, {
+               id: name,
+               view: overview,
+               votet: vote,
+               patht: path
+            }
+          ]));
+    }
+     const handlePress = () => {
+       if(seriesIndex === 16){
+            pageIndex = pageIndex + 1;
+          setPageIndex(pageIndex);
+          seriesIndex = 0;
+          setSeriesIndex(seriesIndex);
+          console.log(pageIndex);
           }
           else{
-            mi = mi + 4;
-            setMi(mi);
+            seriesIndex = seriesIndex + 4;
+            setSeriesIndex(seriesIndex);
           }
-         }
-      }); 
-  },[])
+     }
+
+     const spaceEvent = (e) => {
+      if(e.key === ' '){
+         e.preventDefault();
+         handlePress();
+        }
+     }
+
      useEffect(() => {
-        window.addEventListener('keypress', e => {
-           if(e.key === ' '){
-            e.preventDefault();
+      window.addEventListener('keypress', spaceEvent);
+
+      return () => {
+         window.removeEventListener('keypress', spaceEvent);
+      }
+
+     }, [])
+
+     useEffect(() => {
             async function getdata() { 
-                const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&page=${pi}&with_genres=${location.state.gen}&with_original_language=${location.state.id}`);
+                const response = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=b64240118eb5bcd92feae0701121fc7f&language=en-US&sort_by=popularity.desc&page=${pageIndex}&with_genres=${location.state.gen}&with_original_language=${location.state.id}`);
                 const data = await response.json();
                 let res = data.results;
-                setMovies(res);
+                setSeries(res);
               }
               getdata();
-           }
-        });
-      }, []);
+      }, [pageIndex]);
+
+      // let mov = series.filter(obj => obj.release_date > location.state.ye);
+      
     return ( 
         <div>
             <Navbar />
             <h2>Press Space bar to Generate</h2>
             <div className="card-container">
-            {movies.slice(mi, mi+4).map(obj => (
+            {series.slice(seriesIndex, seriesIndex+4).map(obj => (
                <div className="card"  key={obj.id}>
-            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.poster_path} alt="movieposter" style={{width: "240px"}}></img>
-            <h2>{obj.original_name}</h2>
+            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.poster_path} alt="seriesposter" style={{width: "240px", color: "#fff"}}></img>
+            <h2>{obj.name}</h2>
+            <h3>{seriesIndex}</h3>
+           <button onClick={()=> handleClick(obj.name, obj.overview, obj.vote_average, obj.poster_path)} className='save-button'><img alt="svgImg" style={{width: "24px", height: "24px"}} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9ImZpbGw6I0ZGRkZGRjsiPgogICAgPHBhdGggZD0iTTE3LDR2MTQuOTY3bC00LjIxMi0xLjgwNUwxMiwxNi44MjRsLTAuNzg4LDAuMzM4TDcsMTguOTY3VjRIMTcgTTE3LDJIN0M1LjksMiw1LDIuOSw1LDR2MThsNy0zbDcsM1Y0QzE5LDIuOSwxOC4xLDIsMTcsMiBMMTcsMnoiPjwvcGF0aD4KPC9zdmc+"/></button>
             <h5>Rating : {obj.vote_average}</h5>
             <p className="text">{obj.overview}</p>
             </div>
