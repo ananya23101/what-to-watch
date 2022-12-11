@@ -11,7 +11,7 @@ const Cards = () => {
     const [items, setItems] = useState(() => {
       const data = localStorage.getItem('myItem');
       return data ? JSON.parse(data) : [ ]
-    })
+    });
     let [pageIndex, setPageIndex] = useState(1);
     let [movieIndex , setMovieIndex] = useState(0);
     const handleClick = (name, overview, vote, path) => {
@@ -71,7 +71,7 @@ const Cards = () => {
       }, [pageIndex]);
 
       let mov = movies.filter(obj => obj.release_date > location.state.ye);
-      
+
     return ( 
         <div>
             <Navbar />

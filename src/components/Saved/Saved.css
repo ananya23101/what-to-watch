@@ -1,0 +1,25 @@
+.card-container-saved{
+    display: flex;
+    flex-wrap:  wrap;
+    color : white;
+  }
+  .card-saved{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgb(223, 40, 40);
+      height: 200px;
+      width: 150px;
+      border-radius: 20px;
+      padding: 0.75rem;
+      margin: 1rem;
+  }
+  .card-saved img {
+      height: 100px;
+      border-radius: 20px;
+  }
+  .card-saved h2, h5{
+      font-size: 1.2rem;
+      color: #fff;
+      background-color: none;
+  }

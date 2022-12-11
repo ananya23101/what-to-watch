@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Series from './Series';
 import Movies from './Movies';
 import Cardss from './components/Cards/Cardss';
+import Saved from './components/Saved/Saved';
 function App() {
  
  return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/Series" element = {<Series />}></Route>
       <Route path="/Cards" element = {<Cards />}></Route>
       <Route path="/Cardss" element = {<Cardss />}></Route>
+      <Route path="/Saved" element = {<Saved />}></Route>
      </Routes>
     </div>
     </BrowserRouter>

@@ -8,6 +8,7 @@ const Navbar = () => {
             <div className="links">
             <NavLink className={({isActive}) => isActive ? "hell": "non-active-class" } to = "/"> Movies </NavLink>
             <NavLink className={({isActive}) => isActive ? "hell": "non-active-class" } to = "/Series"> Series </NavLink>
+            <NavLink className={({isActive}) => isActive ? "hell": "non-active-class" } to = "/Saved"> Saved </NavLink>
             </div>
         </nav>
      );
