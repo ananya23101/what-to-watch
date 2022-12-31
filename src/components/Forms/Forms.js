@@ -5,17 +5,16 @@ import './Forms.css';
 const Forms = () => {
   const [genres, setGenres] = useState('');
   const [language, setLanguage] = useState('en');
-  const [year, setYear] = useState('0');
   const navigate = useNavigate();
   const location = useLocation();
 const handleSubmit = (e) => {
   e.preventDefault();
   if(location.pathname==='/')
   {
-    navigate('/Cards', {state:{gen : genres, id: language, ye: year}});
+    navigate('/Cards', {state:{gen : genres, id: language}});
   }
   else{
-    navigate('/Cardss', {state:{gen : genres, id: language, ye: year}});
+    navigate('/Cardss', {state:{gen : genres, id: language}});
   }
 }
 if(location.pathname === '/'){
@@ -60,16 +59,6 @@ if(location.pathname === '/'){
           <option value="ko">Korean</option>
           <option value="zh">Mandarin</option>
         </select>
-       <label>Year</label>
-       <select value={year}
-       onChange={(e)=>setYear(e.target.value)}>
-        <option value="0">All</option>
-        <option value="1900">Movies between 1900 to 1950</option>
-        <option value="1950">Movies between 1950 to 2000</option>
-        <option value="2000">Movies between 2000 to 2010</option>
-        <option value="2010">Movies between 2010 to 2020</option>
-        <option value="2020">Movies after 2020</option>
-       </select>
        <button type="submit" className='button'>Generate</button>
       </form>
     </div>
@@ -115,16 +104,6 @@ else{
           <option value="ko">Korean</option>
           <option value="zh">Mandarin</option>
         </select>
-       <label>Year</label>
-       <select value={year}
-       onChange={(e)=>setYear(e.target.value)}>
-        <option value="0">All</option>
-        <option value="1900">Movies between 1900 to 1950</option>
-        <option value="1950">Movies between 1950 to 2000</option>
-        <option value="2000">Movies between 2000 to 2010</option>
-        <option value="2010">Movies between 2010 to 2020</option>
-        <option value="2020">Movies after 2020</option>
-       </select>
        <button type="submit" className='button'>Generate</button>
       </form>
     </div>

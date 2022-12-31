@@ -1,11 +1,12 @@
 *{
   padding: 0;
   margin: 0;
+  background-color: #000;
+  color: #fff;
 }
 .App {
-   background: #000;
-   height: 100vh;
    position: relative;
+   padding: 0.25rem;
 }
 h2{
   color: #fff;

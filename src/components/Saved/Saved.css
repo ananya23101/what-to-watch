@@ -7,19 +7,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: rgb(223, 40, 40);
-      height: 200px;
+      background-color: rgb(44, 44, 44);
+      height: 300px;
       width: 150px;
       border-radius: 20px;
       padding: 0.75rem;
       margin: 1rem;
   }
   .card-saved img {
-      height: 100px;
+      height: 200px;
       border-radius: 20px;
   }
   .card-saved h2, h5{
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #fff;
       background-color: none;
-  }
+  } 
