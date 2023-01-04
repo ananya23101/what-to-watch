@@ -38,6 +38,10 @@
     ]
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "minimatch": "^5.1.1"
+  },
+  "overrides": {
+     "@svgr/webpack": "$@svgr/webpack"
   }
 }
