@@ -26,7 +26,7 @@ form{
 label{
     color: #fff;
     text-align: center;
-    margin: 20px 0px 10px 0;
+    margin: 20px 0px 10px 0px;
 }
 select{
     width: 20rem;
@@ -43,4 +43,12 @@ select{
     border: none;
     border-radius: 10px;
     color: #fff;
+}
+@media only screen and (max-width: 500px){
+    .create-form{
+        width: 40vh;
+    }
+    select{
+        width: 16rem;
+    }
 }

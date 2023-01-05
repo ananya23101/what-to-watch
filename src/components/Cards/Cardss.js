@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import { MobileView } from "react-device-detect";
+import { MobileView , BrowserView} from "react-device-detect";
 import './Cards.css';
 
 const Cardss = () => {
@@ -30,16 +30,11 @@ const Cardss = () => {
        
 
         localStorage.setItem('myItem', JSON.stringify(items));
-        // setActiveState({
-        //   ...activeState,
-        //   [key] : !activeState[key]
-        //  });
+        setActiveState({
+          ...activeState,
+          [key] : !activeState[key]
+         });
   
-        activeState[key] = false;
-  
-        setActiveState(activeState);
-       
-        delete activeState[key];
   
         localStorage.setItem('savedItems', JSON.stringify(activeState));
   
@@ -123,21 +118,25 @@ const Cardss = () => {
       {errorMessage && <div><p>{errorMessage}</p></div>}
       {!errorMessage &&   <div>
             <Navbar />
-            <h2>Press Space bar to Generate</h2>
+            <BrowserView><h2>Press Space bar to Generate</h2></BrowserView>
             <div className="card-container">
             {series.slice(seriesIndex, seriesIndex+4).map(obj => (
                <div className="card"  key={obj.id}>
-            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.poster_path} alt="seriesposter" style={{width: "240px", color: "#fff"}}></img>
+            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.poster_path} alt="seriesposter"></img>
+            <p className="text">{obj.overview}</p>
+            <div className="card-details">
             <h2>{obj.name}</h2>
            <button onClick={()=> handleClick(obj.name, obj.overview, obj.vote_average, obj.poster_path, obj.id)} className='save-button'><img alt="svgImg" style={{width: "24px", height: "24px"}} src={(!activeState[obj.id] ? "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9ImZpbGw6I0ZGRkZGRjsiPgogICAgPHBhdGggZD0iTTE3LDR2MTQuOTY3bC00LjIxMi0xLjgwNUwxMiwxNi44MjRsLTAuNzg4LDAuMzM4TDcsMTguOTY3VjRIMTcgTTE3LDJIN0M1LjksMiw1LDIuOSw1LDR2MThsNy0zbDcsM1Y0QzE5LDIuOSwxOC4xLDIsMTcsMiBMMTcsMnoiPjwvcGF0aD4KPC9zdmc+" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAgklEQVQ4je2SsQ2DUAxEzxRRmkiswQpUmSQrZAoyCWVGSsMOKNJP82gI+oqEv0NFwUlubN/zFZZ2JeABJNaVgC732A8gSToV7iQzO68BiCQ1s8VXRQyeDkAZ8JlrE2CQdJXUSnqF4mQf9wTqrH8B+u/QA7yBuzO/AaMHaAIpizt/aQJtZ2ZdvfR18QAAAABJRU5ErkJggg==")}/></button>
             <h5>Rating : {obj.vote_average}</h5>
-            <p className="text">{obj.overview}</p>
+            </div>
             </div>
             ))}
-           <MobileView>
-            <button onClick={handlePress}>Generate</button>
-           </MobileView>
             </div>
+           <MobileView>
+           <div className="mobile-generate-button">
+            <button onClick={handlePress} className="button">Generate</button>
+            </div>
+           </MobileView>
         </div>}
       </>
      );

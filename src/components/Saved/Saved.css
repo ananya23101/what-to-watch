@@ -1,15 +1,19 @@
+*{
+    background-color: #000;
+}
 .card-container-saved{
     display: flex;
     flex-wrap:  wrap;
     color : white;
+    padding: 1rem;
   }
   .card-saved{
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: rgb(44, 44, 44);
-      height: 300px;
-      width: 150px;
+      height: 280px;
+      width: 130px;
       border-radius: 20px;
       padding: 0.75rem;
       margin: 1rem;
@@ -19,7 +23,16 @@
       border-radius: 20px;
   }
   .card-saved h2, h5{
-      font-size: 1rem;
+      font-size: 0.75rem;
       color: #fff;
       background-color: none;
   } 
+  @media only screen and (max-width: 600px) {
+    .card-container-saved{
+        align-items: center;
+        justify-content: center;
+    }
+    .card-saved{
+        margin: 0.4rem;
+    }
+}
