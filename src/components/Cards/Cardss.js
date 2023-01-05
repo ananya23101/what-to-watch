@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import { MobileView } from "react-device-detect";
 import './Cards.css';
 
 const Cardss = () => {
@@ -18,7 +19,9 @@ const Cardss = () => {
       const data = localStorage.getItem('savedItems');
       return data ? JSON.parse(data) : [ ]
     });
-    let [errorMessage, setErrorMessage] = useState("")
+    let [errorMessage, setErrorMessage] = useState("");
+
+  
     const handleClick = (name, overview, vote, path,key) => {
       var index = items.findIndex(i => i.id === name);
 
@@ -131,6 +134,9 @@ const Cardss = () => {
             <p className="text">{obj.overview}</p>
             </div>
             ))}
+           <MobileView>
+            <button onClick={handlePress}>Generate</button>
+           </MobileView>
             </div>
         </div>}
       </>

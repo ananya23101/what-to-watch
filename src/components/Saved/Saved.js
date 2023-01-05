@@ -33,15 +33,16 @@ const handleClick = (name, key) => {
     return ( 
         <div>
             <Navbar />
-            <div className="card-container-saved"> 
+            {items && <p></p>}
+          {items && <div className="card-container-saved"> 
            {items.map(obj => (
-           <div className="card-saved">
+           <div className="card-saved" key={obj.keyt}>
            <img src = {`https://image.tmdb.org/t/p/w500`+ obj.patht} alt="poster"></img>
            <h2>{obj.id}</h2>
            <button onClick={()=> handleClick(obj.id, obj.keyt)} className='save-button'><img alt="svgImg" style={{width: "24px", height: "24px"}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAgklEQVQ4je2SsQ2DUAxEzxRRmkiswQpUmSQrZAoyCWVGSsMOKNJP82gI+oqEv0NFwUlubN/zFZZ2JeABJNaVgC732A8gSToV7iQzO68BiCQ1s8VXRQyeDkAZ8JlrE2CQdJXUSnqF4mQf9wTqrH8B+u/QA7yBuzO/AaMHaAIpizt/aQJtZ2ZdvfR18QAAAABJRU5ErkJggg=="/></button>
            </div>
            ))}
-        </div>
+        </div>}
         </div>
      )
 }
