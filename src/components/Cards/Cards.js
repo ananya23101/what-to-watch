@@ -33,9 +33,11 @@ const Cards = () => {
 
       localStorage.setItem('myItem', JSON.stringify(items));
 
-      setActiveState({...activeState,
-          [key] : !activeState[key]
-      })
+      activeState[key] = false;
+
+     delete activeState[key];
+
+     setActiveState({...activeState})
 
         localStorage.setItem('savedItems', JSON.stringify(activeState));
 
